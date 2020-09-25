@@ -1,0 +1,18 @@
+﻿@model EditUserRolesViewModel
+
+@{
+    ViewData["Title"] = "Edit roles";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <select asp-for="SelectedRoles" asp-items="Model.Roles" multiple class="form-control"></select>
+        <small>* Hold "Ctrl" to select multiple roles</small><br />
+        <small>* Hold "Ctrl" to deselect a role</small>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>
+

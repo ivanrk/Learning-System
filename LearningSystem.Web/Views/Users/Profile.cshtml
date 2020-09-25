@@ -1,0 +1,38 @@
+﻿@model UserCoursesModel
+
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Courses.Count == 0)
+{
+    <span>You are not enrolled in any courses. To sign up for a course, go to <a asp-controller="Home" asp-action="Index">Home page</a>.</span>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model.Courses)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">@course.Name</a>
+                            </td>
+                            <td>@(course.Grade == null ? "No grade" : course.Grade.ToString())</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
